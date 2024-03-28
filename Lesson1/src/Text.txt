@@ -1,0 +1,38 @@
+TypeScript is a strongly types prograaming language which is built on top of javascript or we can say
+typescript is javascript with syntax for types 
+Strongly typed languages demand the specification of datatypes 
+typescript is a statically typed language which means types are checked at compile time 
+where as jvascript is dynamically typed language which means types are checked at run time 
+
+It is created by microsoft 
+
+in order to compile a javascript file from a typescript file we need to write 
+tsc fileName.ts in the terminal 
+
+Now any change we do in our ts file we need to compile it again in order to see the changes or we could 
+do 
+tsc fileName.ts -w
+-w watch for changes 
+
+Now the file structure in ts looks 
+a build folder in which we put our compiled code like html css js 
+while our raw code like ts will be in src folder 
+to let typescript know that all of our typescript code in the src directory and then compile them and 
+put them in the build directory or inside a js folder in the built directory 
+
+we can do this using typescript config file 
+tsc --init
+now go in there change the rootDir to src where our ts files will be, 
+then change the outDir to where will be your js files 
+build/js
+in order to look for all the files the directory we can write 
+tsc -w in the lesson1
+note that while watching in case if decided to delete our .ts file it will not automatically delete 
+the its .js file 
+
+Now we have decided a directory where all our ts file are going to be 
+so in case if any ts file is outside those directory we can make ts ignore them 
+using
+add   "include": ["src"] add this at the very end 
+by allowing noemitonerror property we make sure that in case if there is an error in our typescript
+file, it wont compile our js file 
