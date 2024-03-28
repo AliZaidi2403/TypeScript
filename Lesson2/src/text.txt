@@ -1,0 +1,5 @@
+Now when we write define variables in typescript we implicitly show that we are using variable a for 
+storing string 
+example let a = "amaan" ; 
+but to explicitly tell that it is that we are storing in a 
+let a : string  = "amaan" ;
