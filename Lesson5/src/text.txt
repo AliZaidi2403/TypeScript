@@ -1,0 +1,2 @@
+Type assertion and type casting are used interchangebly
+over the web 
