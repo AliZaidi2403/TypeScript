@@ -46,3 +46,52 @@ class WebDev extends Coder {
 const Ali = new WebDev("Mac", "Ali", 1, 21);
 console.log(Ali.getLang());
 console.log(Ali.getAge());
+class Guitarist {
+    constructor(name, instrument) {
+        this.name = name;
+        this.instrument = instrument;
+    }
+    play(action) {
+        return ` ${this.name} ${action} the ${this.instrument}`;
+    }
+}
+const page = new Guitarist("Jimmy", "Guitar");
+console.log(page.play("play"));
+class Peeps {
+    static getCount() {
+        return Peeps.count;
+    }
+    constructor(name) {
+        this.name = name;
+        this.name = name;
+        this.id = ++Peeps.count;
+    }
+}
+Peeps.count = 0;
+console.log(Peeps.count);
+const John = new Peeps("John");
+console.log(Peeps.count);
+const Amy = new Peeps("Amy");
+console.log(Peeps.count);
+const Steve = new Peeps("Steve");
+console.log(Peeps.count);
+class Bands {
+    constructor() {
+        this.dataState = [];
+    }
+    get data() {
+        return this.dataState;
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every((el) => typeof el === "string")) {
+            this.dataState = value;
+            return;
+        }
+        else {
+            throw new Error("Invalid data sent as parameter");
+        }
+    }
+}
+const Band1 = new Bands();
+Band1.data = ["Amaan", "Zaidi"];
+console.log(Band1.data);
