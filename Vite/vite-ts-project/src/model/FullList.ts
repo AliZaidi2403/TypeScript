@@ -12,7 +12,7 @@ interface List {
 // it means that the class cannot be instantiated from outside of its own class.
 
 export default class FullList implements List {
-  public static instance: FullList = new FullList();
+  static instance: FullList = new FullList();
   private constructor(private _list: ListItem[] = []) {}
 
   get list(): ListItem[] {
