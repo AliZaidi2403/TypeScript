@@ -1,4 +1,10 @@
-import { ReactElement, createContext, useEffect, useState } from "react";
+import {
+  ReactElement,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export type ProductType = {
   sku: string;
@@ -39,4 +45,9 @@ export const ProductProvider = ({ children }: ChildrenType): ReactElement => {
       {children}
     </ProductContext.Provider>
   );
+};
+
+export const useProducts = () => {
+  const context = useContext(ProductContext);
+  return context;
 };

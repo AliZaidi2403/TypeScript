@@ -1,4 +1,10 @@
-import { createContext, useCallback, useReducer, ReactElement } from "react";
+import {
+  createContext,
+  useCallback,
+  useReducer,
+  ReactElement,
+  useContext,
+} from "react";
 
 export type CartItemType = {
   sku: string;
@@ -84,7 +90,11 @@ const useCartContext = (initState: CartStateType) => {
     (prev, cartItem) => prev + cartItem.quantity,
     0
   );
-  const totalPrice = new Intl.NumberFormat("en-us").format(
+  const formatter = new Intl.NumberFormat("en-Us", {
+    style: "currency",
+    currency: "USD",
+  });
+  const totalPrice = formatter.format(
     state.cart.reduce((prev, item) => {
       return prev + item.price * item.quantity;
     }, 0)
@@ -109,8 +119,8 @@ const useCartContext = (initState: CartStateType) => {
   return { Add, Submit, Quantity, Remove, cart, totalItems, totalPrice };
 };
 
-export type UserCartContextType = ReturnType<typeof useCartContext>;
-const initContextState: UserCartContextType = {
+export type UseCartContextType = ReturnType<typeof useCartContext>;
+const initContextState: UseCartContextType = {
   Add: (value: CartItemType) => {},
   Remove: (value: CartItemType) => {},
   Quantity: (value: CartItemType) => {},
@@ -119,7 +129,7 @@ const initContextState: UserCartContextType = {
   totalPrice: "",
   cart: [],
 };
-const CartContext = createContext<UserCartContextType>(initContextState);
+const CartContext = createContext<UseCartContextType>(initContextState);
 
 type ChildrenType = { children?: ReactElement | ReactElement[] };
 
@@ -129,6 +139,11 @@ export const CartProvider = ({ children }: ChildrenType): ReactElement => {
       {children}
     </CartContext.Provider>
   );
+};
+
+export const useCart = (): UseCartContextType => {
+  const context = useContext(CartContext);
+  return context;
 };
 
 export default CartContext;
